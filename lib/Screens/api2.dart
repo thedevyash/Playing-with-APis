@@ -30,7 +30,24 @@ class _Api2State extends State<Api2> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("APi2"),
+        ),
+        body: FutureBuilder(
+            future: getapi2(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Text("Loading...");
+              } else {
+                return Expanded(
+                    child: ListView.builder(
+                        itemCount: photosList.length,
+                        itemBuilder: (context, index) {
+                          return Text("Hello World");
+                        }));
+              }
+            }));
   }
 }
 
